@@ -293,126 +293,123 @@ export default function Home() {
       {/* Main Content */}
       <main className="relative z-10">
         {/* Hero Section - Landing Page */}
-  <section id="home" className="min-h-[80vh] flex flex-col items-center justify-center px-4 pt-16 sm:pt-20 pb-8 sm:pb-16">
-    <div className="max-w-5xl mx-auto text-center w-full">
-      {/* Car GIF with Heading Overlay */}
-      <div className="relative mb-8 mt-8 sm:mt-12">
-        <Image
-          src="/assets/cargif2.gif"
-          alt="Car Wash Animation"
-          width={720}
-          height={360}
-          className="w-full max-w-[90vw] sm:max-w-3xl h-auto object-cover rounded-xl shadow-2xl mx-auto"
-          style={{ objectFit: "cover", aspectRatio: "2/1" }}
-          priority
-          onError={(e) => {
-            e.target.src = "/assets/fallback-car.png"; // Fallback image
-          }}
-        />
-        {/* Brand Name Overlay - positioned in lower section of gif */}
-        <div className="absolute inset-0 flex flex-col items-center justify-end pb-4 sm:pb-8 md:pb-12">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold mb-2 tracking-tight drop-shadow-2xl">
-            <span className="text-white">BLUE</span>{" "}
-            <span className="text-blue-400">MOON</span>
-          </h1>
-          <p className="text-sm sm:text-base md:text-lg text-blue-400 font-semibold mb-1 drop-shadow-lg">
-            Car Wash and Detailing Service
-          </p>
-          <p className="text-xs sm:text-sm md:text-base text-blue-200 font-light drop-shadow-lg">
-            Come and Get Your Shine
-          </p>
-        </div>
-      </div>
-
-      {/* Enhanced CTA Buttons */}
-      <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 sm:mb-20">
-        <a
-          href="tel:+971508586444"
-          className="group relative flex items-center gap-3 bg-gradient-to-r from-blue-600 via-blue-700 to-blue-600 hover:from-blue-700 hover:via-blue-800 hover:to-blue-700 px-6 py-4 sm:px-8 sm:py-4 md:px-10 md:py-5 rounded-2xl text-sm sm:text-base md:text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-blue-500/25 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full sm:w-auto overflow-hidden"
-          aria-label="Call Blue Moon at +971 50 858 6444"
-        >
-          {/* Button Glow Effect */}
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"></div>
-          
-          <div className="relative flex items-center gap-3">
-            <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-              <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
-            </div>
-            <div className="text-left">
-              <div className="text-xs opacity-80">Call Now</div>
-              <div className="font-bold">+971 50 858 6444</div>
-            </div>
-          </div>
-        </a>
-        
-        <a
-          href="https://wa.me/971508586444"
-          className="group relative flex items-center gap-3 bg-gradient-to-r from-green-600 via-green-700 to-green-600 hover:from-green-700 hover:via-green-800 hover:to-green-700 px-6 py-4 sm:px-8 sm:py-4 md:px-10 md:py-5 rounded-2xl text-sm sm:text-base md:text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-green-500/25 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 w-full sm:w-auto overflow-hidden"
-          aria-label="Book via WhatsApp"
-        >
-          {/* Button Glow Effect */}
-          <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-green-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"></div>
-          
-          <div className="relative flex items-center gap-3">
-            <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-              <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5" />
-            </div>
-            <div className="text-left">
-              <div className="text-xs opacity-80">WhatsApp</div>
-              <div className="font-bold">Quick Booking</div>
-            </div>
-          </div>
-        </a>
-      </div>
-
-      {/* Enhanced Features Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-5xl mx-auto">
-        {features.map((feature, i) => (
-          <div
-            key={i}
-            className="group relative"
-            style={{ animationDelay: `${i * 200}ms` }}
-          >
-            {/* Glow Effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
-            
-            <div className={`relative ${feature.bgColor} backdrop-blur-xl p-6 sm:p-8 rounded-2xl border ${feature.borderColor} shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-3 group`}>
-              {/* Feature Number */}
-              <div className="absolute -top-3 -right-3 w-8 h-8 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center text-white text-sm font-bold">
-                {i + 1}
+        <section id="home" className="min-h-[80vh] flex flex-col items-center justify-center px-4 pt-8 pb-8 sm:pt-12 sm:pb-16">
+          <div className="max-w-5xl mx-auto text-center w-full">
+            {/* Car GIF with Heading Overlay */}
+            <div className="relative mb-8">
+              <Image
+                src="/assets/cargif.gif"
+                alt="Car Wash Animation"
+                width={720}
+                height={360}
+                className="w-full max-w-[90vw] sm:max-w-3xl h-auto object-cover rounded-xl shadow-2xl mx-auto"
+                style={{ objectFit: "cover", aspectRatio: "2/1" }}
+                priority
+              />
+              {/* Brand Name Overlay - positioned in lower section of gif */}
+              <div className="absolute inset-0 flex flex-col items-center justify-end pb-4 sm:pb-8 md:pb-12">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold mb-2 tracking-tight drop-shadow-2xl">
+                  <span className="text-white">BLUE</span>{" "}
+                  <span className="text-blue-400">MOON</span>
+                </h1>
+                <p className="text-sm sm:text-base md:text-lg text-blue-400 font-semibold mb-1 drop-shadow-lg">
+                  Car Wash and Detailing Service
+                </p>
+                <p className="text-xs sm:text-sm md:text-base text-blue-200 font-light drop-shadow-lg">
+                  Come and Get Your Shine
+                </p>
               </div>
-              
-              {/* Icon Container */}
-              <div className={`${feature.iconColor} mb-6 flex justify-center group-hover:scale-125 transition-transform duration-500`}>
-                <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center backdrop-blur-sm">
-                  {feature.icon}
+            </div>
+
+            {/* Enhanced CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 sm:mb-20">
+              <a
+                href="tel:+971508586444"
+                className="group relative flex items-center gap-3 bg-gradient-to-r from-blue-600 via-blue-700 to-blue-600 hover:from-blue-700 hover:via-blue-800 hover:to-blue-700 px-6 py-4 sm:px-8 sm:py-4 md:px-10 md:py-5 rounded-2xl text-sm sm:text-base md:text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-blue-500/25 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full sm:w-auto overflow-hidden"
+                aria-label="Call Blue Moon at +971 50 858 6444"
+              >
+                {/* Button Glow Effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"></div>
+                
+                <div className="relative flex items-center gap-3">
+                  <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
+                  </div>
+                  <div className="text-left">
+                    <div className="text-xs opacity-80">Call Now</div>
+                    <div className="font-bold">+971 50 858 6444</div>
+                  </div>
                 </div>
+              </a>
+              
+              <a
+                href="https://wa.me/971508586444"
+                className="group relative flex items-center gap-3 bg-gradient-to-r from-green-600 via-green-700 to-green-600 hover:from-green-700 hover:via-green-800 hover:to-green-700 px-6 py-4 sm:px-8 sm:py-4 md:px-10 md:py-5 rounded-2xl text-sm sm:text-base md:text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-green-500/25 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 w-full sm:w-auto overflow-hidden"
+                aria-label="Book via WhatsApp"
+              >
+                {/* Button Glow Effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-green-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"></div>
+                
+                <div className="relative flex items-center gap-3">
+                  <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5" />
+                  </div>
+                  <div className="text-left">
+                    <div className="text-xs opacity-80">WhatsApp</div>
+                    <div className="font-bold">Quick Booking</div>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            {/* Enhanced Features Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-5xl mx-auto">
+              {features.map((feature, i) => (
+                <div
+                  key={i}
+                  className="group relative"
+                  style={{ animationDelay: `${i * 200}ms` }}
+                >
+                  {/* Glow Effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
+                  
+                  <div className={`relative ${feature.bgColor} backdrop-blur-xl p-6 sm:p-8 rounded-2xl border ${feature.borderColor} shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-3 group`}>
+                    {/* Feature Number */}
+                    <div className="absolute -top-3 -right-3 w-8 h-8 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center text-white text-sm font-bold">
+                      {i + 1}
+                    </div>
+                    
+                    {/* Icon Container */}
+                    <div className={`${feature.iconColor} mb-6 flex justify-center group-hover:scale-125 transition-transform duration-500`}>
+                      <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center backdrop-blur-sm">
+                        {feature.icon}
+                      </div>
+                    </div>
+                    
+                    {/* Content */}
+                    <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 text-center group-hover:text-blue-100 transition-colors duration-300">
+                      {feature.title}
+                    </h3>
+                    <p className="text-gray-300 text-sm sm:text-base text-center leading-relaxed opacity-90 group-hover:opacity-100 transition-opacity duration-300">
+                      {feature.description}
+                    </p>
+                    
+                    {/* Bottom Accent */}
+                    <div className="mt-6 h-1 bg-gradient-to-r from-transparent via-blue-400 to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Scroll Indicator */}
+            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+              <div className="w-6 h-10 border-2 border-blue-400 rounded-full flex justify-center">
+                <div className="w-1 h-3 bg-blue-400 rounded-full mt-2 animate-pulse"></div>
               </div>
-              
-              {/* Content */}
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 text-center group-hover:text-blue-100 transition-colors duration-300">
-                {feature.title}
-              </h3>
-              <p className="text-gray-300 text-sm sm:text-base text-center leading-relaxed opacity-90 group-hover:opacity-100 transition-opacity duration-300">
-                {feature.description}
-              </p>
-              
-              {/* Bottom Accent */}
-              <div className="mt-6 h-1 bg-gradient-to-r from-transparent via-blue-400 to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <p className="text-blue-400 text-xs mt-2 opacity-70">Scroll Down</p>
             </div>
           </div>
-        ))}
-      </div>
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-blue-400 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-blue-400 rounded-full mt-2 animate-pulse"></div>
-        </div>
-        <p className="text-blue-400 text-xs mt-2 opacity-70">Scroll Down</p>
-      </div>
-    </div>
-  </section>
+        </section>
 
         {/* Enhanced Wash Categories & Booking Section */}
         <section id="wash-categories" className="py-16 px-4 sm:py-24 bg-gradient-to-b from-black via-blue-900/20 to-gray-800 relative overflow-hidden">
