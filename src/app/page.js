@@ -305,6 +305,9 @@ export default function Home() {
           className="w-full max-w-[90vw] sm:max-w-3xl h-auto object-cover rounded-xl shadow-2xl mx-auto"
           style={{ objectFit: "cover", aspectRatio: "2/1" }}
           priority
+          onError={(e) => {
+            e.target.src = "/assets/fallback-car.png"; // Fallback image
+          }}
         />
         {/* Brand Name Overlay - positioned in lower section of gif */}
         <div className="absolute inset-0 flex flex-col items-center justify-end pb-4 sm:pb-8 md:pb-12">
