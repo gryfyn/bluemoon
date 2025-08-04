@@ -203,70 +203,72 @@ export default function Home() {
   ];
 
   // Individual Intersection Observer for each service
-  const serviceRefs = useRef([]);
-  useEffect(() => {
-    const observers = serviceRefs.current.map((ref, index) => {
-      if (!ref) return null;
-      
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target); // Stop observing once animated
-          }
-        },
-        {
-          threshold: 0.3, // Trigger when 30% of the element is visible
-          rootMargin: '0px 0px -20% 0px', // Delay until element is more in viewport
-        }
-      );
-      
-      observer.observe(ref);
-      return observer;
-    }).filter(Boolean);
+const serviceRefs = useRef([]);
+useEffect(() => {
+  const currentServiceRefs = serviceRefs.current; // Capture ref value
+  const observers = currentServiceRefs.map((ref, index) => {
+    if (!ref) return null;
 
-    return () => {
-      observers.forEach((observer, index) => {
-        if (serviceRefs.current[index]) {
-          observer.unobserve(serviceRefs.current[index]);
-        }
-      });
-    };
-  }, []);
-
-  // Intersection Observer for About section image scaling
-  const aboutSectionRef = useRef(null);
-  const aboutImageRef = useRef(null);
-
-  useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (aboutImageRef.current) {
-          if (entry.isIntersecting) {
-            aboutImageRef.current.style.transform = 'scale(1)';
-            aboutImageRef.current.style.opacity = '1';
-          } else {
-            aboutImageRef.current.style.transform = 'scale(0.7)';
-            aboutImageRef.current.style.opacity = '0.7';
-          }
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target); // Stop observing once animated
         }
       },
       {
-        threshold: 0.5, // Trigger when 50% of section is visible
-        rootMargin: '0px 0px -10% 0px', // Adjust for smooth detection
+        threshold: 0.3, // Trigger when 30% of the element is visible
+        rootMargin: '0px 0px -20% 0px', // Delay until element is more in viewport
       }
     );
 
-    if (aboutSectionRef.current) {
-      observer.observe(aboutSectionRef.current);
-    }
+    observer.observe(ref);
+    return observer;
+  }).filter(Boolean);
 
-    return () => {
-      if (aboutSectionRef.current) {
-        observer.unobserve(aboutSectionRef.current);
+  return () => {
+    observers.forEach((observer, index) => {
+      if (currentServiceRefs[index]) {
+        observer.unobserve(currentServiceRefs[index]);
       }
-    };
-  }, []);
+    });
+  };
+}, []); // Empty dependency array as refs are stable
+
+// Intersection Observer for About section image scaling
+const aboutSectionRef = useRef(null);
+const aboutImageRef = useRef(null);
+
+useEffect(() => {
+  const currentAboutSectionRef = aboutSectionRef.current; // Capture ref value
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (aboutImageRef.current) {
+        if (entry.isIntersecting) {
+          aboutImageRef.current.style.transform = 'scale(1)';
+          aboutImageRef.current.style.opacity = '1';
+        } else {
+          aboutImageRef.current.style.transform = 'scale(0.7)';
+          aboutImageRef.current.style.opacity = '0.7';
+        }
+      }
+    },
+    {
+      threshold: 0.5, // Trigger when 50% of section is visible
+      rootMargin: '0px 0px -10% 0px', // Adjust for smooth detection
+    }
+  );
+
+  if (currentAboutSectionRef) {
+    observer.observe(currentAboutSectionRef);
+  }
+
+  return () => {
+    if (currentAboutSectionRef) {
+      observer.unobserve(currentAboutSectionRef);
+    }
+  };
+}, []); // Empty dependency array as refs are stable
 
   return (
     <div className="min-h-screen bg-black text-white font-sans" style={{ scrollBehavior: 'smooth' }}>
@@ -314,7 +316,7 @@ export default function Home() {
                   Car Wash and Detailing Service
                 </p>
                 <p className="text-sm sm:text-base md:text-lg text-blue-200 font-light drop-shadow-lg">
-                  "Come and Get Your Shine"
+                  Come and Get Your Shine
                 </p>
               </div>
             </div>
@@ -789,7 +791,7 @@ export default function Home() {
 
             {/* Description */}
             <p className="text-lg sm:text-xl text-gray-200 max-w-3xl mx-auto mb-12 leading-relaxed font-light animate-fadeIn delay-100">
-              At Blue Moon Car Wash and Detailing, we believe your vehicle is more than just a mode of transport—it's an extension of your style and personality. Founded with a passion for automotive excellence, we bring professional-grade detailing services directly to your doorstep. Using eco-friendly products and premium materials from industry leaders like Koch & Adams, we ensure every service delivers a flawless finish while protecting your car and the environment. Our mission is simple: to elevate car care into an art form, providing convenience, quality, and a shine that turns heads.
+              At Blue Moon Car Wash and Detailing, we believe your vehicle is more than just a mode of transport—it is an extension of your style and personality. Founded with a passion for automotive excellence, we bring professional-grade detailing services directly to your doorstep. Using eco-friendly products and premium materials from industry leaders like Koch & Adams, we ensure every service delivers a flawless finish while protecting your car and the environment. Our mission is simple: to elevate car care into an art form, providing convenience, quality, and a shine that turns heads.
             </p>
 
             {/* Cards */}
@@ -843,7 +845,7 @@ export default function Home() {
             <div className="relative group">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
               <div className="relative overflow-hidden rounded-2xl border border-white/10 backdrop-blur-sm">
-                <img 
+                <Image
                   src="/assets/car2.jpg" 
                   alt="Blue Moon Car Wash - Professional Car Detailing" 
                   className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
@@ -993,7 +995,7 @@ export default function Home() {
 
               {/* Success Message Placeholder */}
               <div className="mt-6 p-4 bg-green-500/10 border border-green-500/20 rounded-xl opacity-0 transition-opacity duration-300">
-                <p className="text-green-400 text-sm text-center">Message sent successfully! We'll get back to you soon.</p>
+                <p className="text-green-400 text-sm text-center">Message sent successfully! We will get back to you soon.</p>
               </div>
             </div>
           </div>
